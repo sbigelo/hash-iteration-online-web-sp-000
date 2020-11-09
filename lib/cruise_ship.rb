@@ -7,13 +7,12 @@
 # }
 
 def select_winner(passengers)
-  winner = ""
-  passengers.each do |key, value|
-    
-    if key == :suite_a && value.start_with?("A")
-      
-      winner = value
-    end
+ lowest_key = passengers.reduce do |key, value|
+    key.last > value.last ? value : key
   end
-  winner
+    if passengers == {}
+      lowest_key
+    else
+      lowest_key.first
+    end
 end
